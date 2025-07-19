@@ -467,6 +467,8 @@ async function loadCocktails() {
     }
 
     cocktails = await response.json();
+    console.log("Cocktails fetched from API:", cocktails); // 👈 Add this
+
     displayCocktails(cocktails);
     checkBrokenImages(); // Check for broken images
   } catch (error) {
