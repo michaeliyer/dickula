@@ -30,10 +30,7 @@ const adminStatus = document.getElementById("admin-status");
 const exitAdminBtn = document.getElementById("exit-admin-btn");
 
 // API base URL
-const API_BASE =
-  "mongodb+srv://michaeliyer:ass100ASS@cluster0.s9vduqy.mongodb.net/mongoLaura";
-// const API_BASE = "https://franky-app-ix96j.ondigitalocean.app/api/bevvies";
-
+const API_BASE = "https://dickula-backend.onrender.com/api/cocktails";
 // Image upload variables
 const fileInput = document.getElementById("theJpegFile");
 const imageUrlInput = document.getElementById("theJpeg");
@@ -658,6 +655,7 @@ async function handleFormSubmit(e) {
 
 // Create new cocktail
 async function createCocktail(cocktailData) {
+  console.log("Sending cocktail data:", cocktailData);
   const response = await fetch(API_BASE, {
     method: "POST",
     headers: {
