@@ -479,6 +479,32 @@ async function loadCocktails() {
   }
 }
 
+// 👇 Place it right here
+// function displayCocktails(cocktails) {
+//   const list = document.getElementById("cocktails-list");
+//   list.innerHTML = ""; // Clear it
+
+//   if (!cocktails || cocktails.length === 0) {
+//     list.innerHTML = "<p>No cocktails found.</p>";
+//     return;
+//   }
+
+//   cocktails.forEach((cocktail) => {
+//     console.log("Rendering:", cocktail);
+
+//     const div = document.createElement("div");
+//     div.classList.add("cocktail-card");
+//     div.innerHTML = `
+//       <h3>${cocktail.theCock}</h3>
+//       <img src="${cocktail.theJpeg}" alt="${cocktail.theCock}" width="200">
+//       <p><strong>Ingredients:</strong> ${cocktail.theIngredients}</p>
+//       <p><strong>Recipe:</strong> ${cocktail.theRecipe}</p>
+//       <p><strong>Comment:</strong> ${cocktail.theComment}</p>
+//     `;
+//     list.appendChild(div);
+//   });
+// }
+
 // Check for broken images
 function checkBrokenImages() {
   const brokenImages = cocktails.filter((cocktail) => {
