@@ -863,6 +863,16 @@ function performDeleteCocktail(id, name) {
 async function handleConfirmDelete() {
   if (!deleteId) return;
 
+  // Add the confirmation alert
+  const isConfirmed = confirm(
+    "This will be permanent. Are you totally sure you want to do this?"
+  );
+  if (!isConfirmed) {
+    return; // User clicked Cancel, so exit without deleting
+  }
+
+  const cocktailName = deleteCocktailName.textContent; // Store the name before deletion
+
   try {
     const response = await fetch(`${API_BASE}/${deleteId}`, {
       method: "DELETE",
@@ -872,6 +882,9 @@ async function handleConfirmDelete() {
       const error = await response.json();
       throw new Error(error.error || "Failed to delete cocktail");
     }
+
+    // Add the success alert
+    alert(`You have successfully deleted ${cocktailName}`);
 
     showMessage("Cocktail deleted successfully!", "success");
     await loadCocktails();
