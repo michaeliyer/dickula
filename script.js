@@ -30,7 +30,8 @@ const adminStatus = document.getElementById("admin-status");
 const exitAdminBtn = document.getElementById("exit-admin-btn");
 
 // API base URL
-const API_BASE = "https://dickula-backend.onrender.com/api/cocktails";
+const API_BASE = "http://localhost:5001/api/cocktails";
+// const API_BASE = "https://dickula-backend.onrender.com/api/cocktails";
 // Image upload variables
 const fileInput = document.getElementById("theJpegFile");
 const imageUrlInput = document.getElementById("theJpeg");
@@ -863,15 +864,23 @@ function performDeleteCocktail(id, name) {
 async function handleConfirmDelete() {
   if (!deleteId) return;
 
+  // Store the name before deletion
+  const cocktailName = deleteCocktailName.textContent;
+
+  // Hide modal visually but don't clear deleteId yet
+  modal.style.display = "none";
+
+  // Give the browser a moment to process the modal hide before showing alert
+  await new Promise((resolve) => setTimeout(resolve, 50));
+
   // Add the confirmation alert
   const isConfirmed = confirm(
     "This will be permanent. Are you totally sure you want to do this?"
   );
   if (!isConfirmed) {
+    deleteId = null; // Clear it only if canceling
     return; // User clicked Cancel, so exit without deleting
   }
-
-  const cocktailName = deleteCocktailName.textContent; // Store the name before deletion
 
   try {
     const response = await fetch(`${API_BASE}/${deleteId}`, {
