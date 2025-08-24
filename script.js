@@ -30,8 +30,8 @@ const adminStatus = document.getElementById("admin-status");
 const exitAdminBtn = document.getElementById("exit-admin-btn");
 
 // API base URL
-const API_BASE = "http://localhost:5001/api/cocktails";
-// const API_BASE = "https://dickula-backend.onrender.com/api/cocktails";
+// const API_BASE = "http://localhost:5001/api/cocktails";
+const API_BASE = "https://dickula-backend.onrender.com/api/cocktails";
 // Image upload variables
 const fileInput = document.getElementById("theJpegFile");
 const imageUrlInput = document.getElementById("theJpeg");
